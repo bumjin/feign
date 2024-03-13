@@ -1,7 +1,7 @@
 package com.example.feign.feign.client;
 
 import com.example.feign.common.dto.BaseRequestInfo;
-import com.example.feign.common.dto.BaseResopnseInfo;
+import com.example.feign.common.dto.BaseResponseInfo;
 import com.example.feign.feign.config.DemoFeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 )
 public interface DemoFeignClient {
     @GetMapping("/get") //-> http://localhost:8080/target_server/get
-    ResponseEntity<BaseResopnseInfo> callGet(@RequestHeader("CustomHeaderName") String customHeader,
+    ResponseEntity<BaseResponseInfo> callGet(@RequestHeader("CustomHeaderName") String customHeader,
                                              @RequestParam("name") String name,
                                              @RequestParam("age") Long age);
 
     @GetMapping("/post") //-> http://localhost:8080/target_server/post
-    ResponseEntity<BaseResopnseInfo> callPost(@RequestHeader("CustomHeaderName") String customHeader,
-                                             @RequestBody BaseRequestInfo baseRequestInfo);
+    ResponseEntity<BaseResponseInfo> callPost(@RequestHeader("CustomHeaderName") String customHeader,
+                                              @RequestBody BaseRequestInfo baseRequestInfo);
+
+    @GetMapping("/error") //-> http://localhost:8080/target_server/post
+    ResponseEntity<BaseResponseInfo> callErrorDecoder();
 }

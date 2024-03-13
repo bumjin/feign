@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BaseResopnseInfo {
+public class BaseResponseInfo {
     private String name;
     private Long age;
     private String header;
